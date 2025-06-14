@@ -201,10 +201,13 @@ h2 {
   flex: 1 1 250px;
   background: var(--light-blue);
   border-radius: 1rem;
+  border: 2px solid var(--turquoise);   /* Add this line */
   padding: 1rem;
   margin-bottom: 1rem;
   position: relative;
+  box-shadow: 0 2px 12px rgba(252, 183, 192, 0.08); /* Optional: subtle pink shadow */
 }
+
 
 .macrame-divider {
   width: 100%;
