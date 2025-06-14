@@ -201,3 +201,10 @@ document.addEventListener('DOMContentLoaded', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
+window.addEventListener('load', function() {
+  const loader = document.getElementById('site-loader');
+  if (loader) {
+    loader.style.opacity = '0';
+    setTimeout(() => loader.style.display = 'none', 600);
+  }
+});
