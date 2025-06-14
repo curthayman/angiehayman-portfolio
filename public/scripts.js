@@ -201,10 +201,20 @@ document.addEventListener('DOMContentLoaded', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
+// Minimum loader display time in milliseconds
+const MIN_LOADER_TIME = 1200;
+
+const loader = document.getElementById('site-loader');
+const loaderStart = Date.now();
+
 window.addEventListener('load', function() {
-  const loader = document.getElementById('site-loader');
-  if (loader) {
-    loader.style.opacity = '0';
-    setTimeout(() => loader.style.display = 'none', 600);
-  }
+  const elapsed = Date.now() - loaderStart;
+  const remaining = Math.max(0, MIN_LOADER_TIME - elapsed);
+
+  setTimeout(() => {
+    if (loader) {
+      loader.style.opacity = '0';
+      setTimeout(() => loader.style.display = 'none', 600);
+    }
+  }, remaining);
 });
