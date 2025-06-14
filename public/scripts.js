@@ -57,12 +57,6 @@ document.querySelectorAll('.icon-btn').forEach(btn => {
   });
 });
 
-// Macrame Hanger Drop (handled by CSS on load)
-
-// Dog Tail Wag (SVG or GIF should have .dog-tail class for animation)
-
-// Sewing Needle Trail (handled by CSS on load)
-
 // Optional: Re-trigger vine animation on scroll into view
 function animateVinesOnScroll() {
   document.querySelectorAll('.plant-vine .vine-svg').forEach(svg => {
@@ -74,6 +68,7 @@ function animateVinesOnScroll() {
 }
 window.addEventListener('scroll', animateVinesOnScroll);
 window.addEventListener('DOMContentLoaded', animateVinesOnScroll);
+
 document.addEventListener("DOMContentLoaded", function() {
   const vine = document.getElementById('header-vine-path');
   if (!vine) return;
@@ -93,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
   animateVine();
   setInterval(animateVine, duration + pause);
 });
+
 function getSeasonalEmojis() {
   // Example: Spring/Summer/Fall/Winter
   const month = new Date().getMonth();
@@ -125,6 +121,7 @@ function createSeasonalItem() {
   }, 8000);
 }
 setInterval(createSeasonalItem, 1200);
+
 document.addEventListener('DOMContentLoaded', function() {
   const slides = document.querySelectorAll('.flyer-slide');
   const prevBtn = document.querySelector('.carousel-btn.prev');
@@ -149,47 +146,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   showSlide(current);
 });
-// Flyer Modal Functionality
-document.addEventListener('DOMContentLoaded', function() {
-  // Carousel code (if you have it) ...
 
-  // Modal code:
-  const flyerModal = document.getElementById('flyer-modal');
-  const flyerModalImg = document.getElementById('flyer-modal-img');
-  const flyerModalClose = document.querySelector('.flyer-modal-close');
-  const flyerModalBackdrop = document.querySelector('.flyer-modal-backdrop');
-
-  // Open modal on flyer click
-  document.querySelectorAll('.flyer-frame img').forEach(img => {
-    img.style.cursor = 'zoom-in';
-    img.addEventListener('click', function() {
-      flyerModalImg.src = this.src;
-      flyerModalImg.alt = this.alt || 'Flyer enlarged';
-      flyerModal.style.display = 'flex';
-      flyerModal.focus();
-      document.body.style.overflow = 'hidden'; // Prevent background scroll
-    });
-  });
-
-  // Close modal on close button or backdrop click
-  function closeFlyerModal() {
-    flyerModal.style.display = 'none';
-    flyerModalImg.src = '';
-    document.body.style.overflow = '';
-  }
-  flyerModalClose.addEventListener('click', closeFlyerModal);
-  flyerModalBackdrop.addEventListener('click', closeFlyerModal);
-
-  // Close modal on ESC key
-  document.addEventListener('keydown', function(e) {
-    if (flyerModal.style.display === 'flex' && (e.key === 'Escape' || e.key === 'Esc')) {
-      closeFlyerModal();
-    }
-  });
-});
 // Back to Top Button
 document.addEventListener('DOMContentLoaded', function() {
   const backToTop = document.getElementById('backToTop');
+  if (!backToTop) return;
   window.addEventListener('scroll', () => {
     if (window.scrollY > 200) {
       backToTop.classList.add('visible');
@@ -201,9 +162,9 @@ document.addEventListener('DOMContentLoaded', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
+
 // Minimum loader display time in milliseconds
 const MIN_LOADER_TIME = 1200;
-
 const loader = document.getElementById('site-loader');
 const loaderStart = Date.now();
 
@@ -217,4 +178,75 @@ window.addEventListener('load', function() {
       setTimeout(() => loader.style.display = 'none', 600);
     }
   }, remaining);
+});
+
+// --- UNIVERSAL MODAL FOR FLYERS, MACRAME, PLANTS ---
+document.addEventListener('DOMContentLoaded', function() {
+  // Modal elements
+  const galleryModal = document.getElementById('gallery-modal');
+  const galleryModalImg = document.getElementById('gallery-modal-img');
+  const galleryModalClose = galleryModal ? galleryModal.querySelector('.flyer-modal-close') : null;
+  const galleryModalBackdrop = galleryModal ? galleryModal.querySelector('.flyer-modal-backdrop') : null;
+
+  // Open modal on any gallery/flyer image click
+  document.querySelectorAll(
+    '.macrame-item img, .plant-item img, .flyer-frame img'
+  ).forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function() {
+      if (galleryModal && galleryModalImg) {
+        galleryModalImg.src = this.src;
+        galleryModalImg.alt = this.alt || 'Gallery enlarged';
+        galleryModal.style.display = 'flex';
+        galleryModal.focus();
+        document.body.style.overflow = 'hidden'; // Prevent background scroll
+      }
+    });
+  });
+
+  // Close modal on close button or backdrop click
+  function closeGalleryModal() {
+    if (galleryModal && galleryModalImg) {
+      galleryModal.style.display = 'none';
+      galleryModalImg.src = '';
+      document.body.style.overflow = '';
+    }
+  }
+  if (galleryModalClose) galleryModalClose.addEventListener('click', closeGalleryModal);
+  if (galleryModalBackdrop) galleryModalBackdrop.addEventListener('click', closeGalleryModal);
+
+  // Close modal on ESC key
+  document.addEventListener('keydown', function(e) {
+    if (
+      galleryModal &&
+      galleryModal.style.display === 'flex' &&
+      (e.key === 'Escape' || e.key === 'Esc')
+    ) {
+      closeGalleryModal();
+    }
+  });
+});
+function setupCarousel(trackSelector) {
+  const carousel = document.querySelector(trackSelector).closest('.carousel');
+  const track = carousel.querySelector('.carousel-track');
+  const items = track.querySelectorAll('.carousel-item');
+  const prevBtn = carousel.querySelector('.carousel-btn.prev');
+  const nextBtn = carousel.querySelector('.carousel-btn.next');
+  let current = 0;
+
+  function showSlide(idx) {
+    current = (idx + items.length) % items.length;
+    track.style.transform = `translateX(${-current * 220}px)`;
+  }
+
+  prevBtn.addEventListener('click', () => showSlide(current - 1));
+  nextBtn.addEventListener('click', () => showSlide(current + 1));
+
+  showSlide(0);
+}
+
+// Initialize both carousels
+document.addEventListener('DOMContentLoaded', function() {
+  setupCarousel('.macrame-track');
+  setupCarousel('.plant-track');
 });

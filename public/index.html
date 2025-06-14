@@ -82,11 +82,7 @@
         </svg>
       </div>
       <div class="header-tagline">Creative soul. Plant lover. Macrame maker.</div>
-      <nav class="header-nav">
-        <a href="#about">About</a>
-        <a href="#what-i-do">What I Do</a>
-        <a href="#social">Find Me</a>
-      </nav>
+
     </div>
   </div>
 </header>
@@ -138,9 +134,6 @@
           <span>Remember to water your plants!</span>
         </div>
       </section>
-
-      <div class="macrame-divider"></div>
-
       <section id="what-i-do" class="fade-in">
         <h2>What I Do</h2>
         <div class="what-i-do-list">
@@ -177,6 +170,47 @@
           </div>
         </div>
       </section>
+      <section id="macrame" class="fade-in">
+  <h2>Macramé Creations</h2>
+  <p class="section-intro">Handmade knots, lots of love, and a little bit of boho magic. Here are some of my favorite macramé pieces!</p>
+  <div class="macrame-gallery">
+    <div class="macrame-item">
+      <img src="assets/wallhangingmacrame.jpeg" alt="Macrame Wall hanging">
+      <div class="macrame-caption">Wall Hanging</div>
+    </div>
+    <div class="macrame-item">
+      <img src="assets/planthangermacrame.jpeg" alt="Macrame Plant Hanger">
+      <div class="macrame-caption">Plant Hanger</div>
+    </div>
+    <div class="macrame-item">
+      <img src="assets/keychains.jpeg" alt="Macrame Keychains">
+      <div class="macrame-caption">Keychain</div>
+    </div>
+    <div class="macrame-item">
+      <img src="assets/wallhangingmacrame2.jpeg" alt="Macrame Wall Hanger">
+      <div class="macrame-caption">Wall Hanging</div>
+    </div>
+  </div>
+</section>
+<section id="plants" class="fade-in">
+  <h2>Plant Collection</h2>
+  <p class="section-intro">A peek at my ever-growing indoor jungle. These green friends bring me so much joy!</p>
+  <div class="plant-gallery">
+    <div class="plant-item">
+      <img src="assets/cactus.JPG" alt="Plant placeholder 1">
+      <div class="plant-caption">Cactus</div>
+    </div>
+    <div class="plant-item">
+      <img src="assets/housepothos.JPG" alt="Plant placeholder 2">
+      <div class="plant-caption">Pothos</div>
+    </div>
+    <div class="plant-item">
+      <img src="assets/IMG_5405.JPG" alt="Plant placeholder 3">
+      <div class="plant-caption">Another Pothos</div>
+    </div>
+  </div>
+</section>
+
   <section id="flyers" class="fade-in">
   <h2>Flyers I've Created</h2>
   <div class="flyer-tree-frame">
@@ -319,11 +353,11 @@
     </div>
   </main>
   <script src="scripts.js"></script>
-<!-- Flyer Modal -->
-<div id="flyer-modal" class="flyer-modal" tabindex="-1" aria-modal="true" role="dialog" style="display:none;">
+<!-- Universal Modal for Flyers, Macrame, Plants, etc. -->
+<div id="gallery-modal" class="flyer-modal" tabindex="-1" aria-modal="true" role="dialog" style="display:none;">
   <div class="flyer-modal-backdrop"></div>
   <div class="flyer-modal-content">
-    <img src="" alt="Flyer enlarged" id="flyer-modal-img">
+    <img src="" alt="Gallery enlarged" id="gallery-modal-img">
     <button class="flyer-modal-close" aria-label="Close">&times;</button>
   </div>
 </div>

@@ -894,3 +894,93 @@ a.cta:hover, a.cta:focus {
   letter-spacing: 0.02em;
   text-align: center;
 }
+.macrame-gallery, .plant-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.macrame-item, .plant-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(145,168,139,0.08);
+  padding: 1rem;
+  width: 200px;
+}
+
+.macrame-item img, .plant-item img {
+  width: 100%;
+  height: 180px;           /* Set a fixed height */
+  object-fit: cover;       /* Crop to fill the box, no distortion */
+  border-radius: 0.8rem;
+  margin-bottom: 0.7rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: #f3f3f3;     /* Optional: fallback background */
+}
+
+
+.macrame-caption, .plant-caption {
+  font-family: 'Homemade Apple', cursive;
+  color: var(--deep-teal, #0A4A4E);
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 0.2rem;
+}
+
+.section-intro {
+  text-align: center;
+  color: var(--dark-pink, #F28C7E);
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+}
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.carousel-track {
+  display: flex;
+  overflow: hidden;
+  width: 220px; /* Adjust width as needed */
+  min-height: 270px;
+  position: relative;
+}
+
+.carousel-item {
+  min-width: 220px;
+  max-width: 220px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(145,168,139,0.08);
+  padding: 1rem;
+  transition: transform 0.4s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+.carousel-btn {
+  background: var(--light-pink, #FCB7C0);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 2rem;
+  color: var(--deep-teal, #0A4A4E);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+}
+.carousel-btn:hover {
+  background: var(--coral, #F28C7E);
+  color: #fff;
+}
