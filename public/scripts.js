@@ -99,7 +99,7 @@ function getSeasonalEmojis() {
   if (month >= 2 && month <= 4) { // March-May: Spring
     return ['🌸', '🌱', '🐣', '🌷', '🐝'];
   } else if (month >= 5 && month <= 7) { // June-Aug: Summer
-    return ['🌻', '🌞', '🍉', '🦋', '🍦'];
+    return ['🌻', '🌞', '🍉', '🪴', '🦙'];
   } else if (month >= 8 && month <= 10) { // Sept-Nov: Fall
     return ['🍂', '🍁', '🎃', '🦃', '🌰'];
   } else { // Dec-Feb: Winter
