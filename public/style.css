@@ -861,6 +861,11 @@ a.cta:hover, a.cta:focus {
     display: none;
   }
 }
+@media (max-width: 400px) {
+  .findme-plant {
+    display: none;
+  }
+}
 #site-loader {
   position: fixed;
   z-index: 99999;
