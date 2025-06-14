@@ -149,3 +149,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
   showSlide(current);
 });
+// Flyer Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Carousel code (if you have it) ...
+
+  // Modal code:
+  const flyerModal = document.getElementById('flyer-modal');
+  const flyerModalImg = document.getElementById('flyer-modal-img');
+  const flyerModalClose = document.querySelector('.flyer-modal-close');
+  const flyerModalBackdrop = document.querySelector('.flyer-modal-backdrop');
+
+  // Open modal on flyer click
+  document.querySelectorAll('.flyer-frame img').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function() {
+      flyerModalImg.src = this.src;
+      flyerModalImg.alt = this.alt || 'Flyer enlarged';
+      flyerModal.style.display = 'flex';
+      flyerModal.focus();
+      document.body.style.overflow = 'hidden'; // Prevent background scroll
+    });
+  });
+
+  // Close modal on close button or backdrop click
+  function closeFlyerModal() {
+    flyerModal.style.display = 'none';
+    flyerModalImg.src = '';
+    document.body.style.overflow = '';
+  }
+  flyerModalClose.addEventListener('click', closeFlyerModal);
+  flyerModalBackdrop.addEventListener('click', closeFlyerModal);
+
+  // Close modal on ESC key
+  document.addEventListener('keydown', function(e) {
+    if (flyerModal.style.display === 'flex' && (e.key === 'Escape' || e.key === 'Esc')) {
+      closeFlyerModal();
+    }
+  });
+});

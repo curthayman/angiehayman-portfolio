@@ -627,3 +627,64 @@ a.cta:hover, a.cta:focus {
   background: var(--coral);
   color: var(--off-white);
 }
+.flyer-modal {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+}
+
+.flyer-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 40, 40, 0.65);
+  cursor: pointer;
+}
+
+.flyer-modal-content {
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  padding: 1.5rem;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: flyerModalIn 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+@keyframes flyerModalIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.flyer-modal-content img {
+  max-width: 70vw;
+  max-height: 70vh;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.flyer-modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.7rem;
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  color: var(--coral, #F28C7E);
+  cursor: pointer;
+  z-index: 3;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s;
+}
+.flyer-modal-close:hover {
+  color: var(--deep-teal, #0A4A4E);
+}
